@@ -12,21 +12,18 @@ The back-office serves as the operational backbone of an investment bank, managi
 
 ## Key Features
 
-Trade Lifecycle Management: Handles client onboarding, trade execution, tax lot generation, and corporate actions.
+* **Trade Lifecycle Management:** Handles client onboarding, trade execution, tax lot generation, and corporate actions.
 
-Hybrid Database Architecture: Utilizes MySQL for transactional integrity (ACID compliance) and MongoDB for flexible security master data and fast read operations.
+* **Hybrid Database Architecture:** Utilizes MySQL for transactional integrity (ACID compliance) and MongoDB for flexible security master data and fast read operations.
 
-Real-time Analytics: A Python-based GUI providing automated P/L calculations (Realized/Unrealized) and portfolio performance visualizations.
+* **Real-time Analytics:** A Python-based GUI providing automated P/L calculations (Realized/Unrealized) and portfolio performance visualizations.
 
+* **Position Reconciliation:** Automated Start-of-Day (SOD) and End-of-Day (EOD) position tracking.
 
-Position Reconciliation: Automated Start-of-Day (SOD) and End-of-Day (EOD) position tracking.
+* **Corporate Actions:** Automatic adjustments for stock splits and dividends.
 
-
-Corporate Actions: Automatic adjustments for stock splits and dividends.
-
-🏗️ System Architecture
+## 🏗️ System Architecture
 1. Data Modeling
-
 The system was designed using Enhanced Entity-Relationship (EER) modeling to capture complex financial relationships.
 
 
