@@ -1,16 +1,16 @@
-#Back-office Database System for Investment Banking
+# Back-office Database System for Investment Banking
 
 This repository contains the full implementation of a Back-Office Database Management System (DBMS) designed for an Investment Bank. The project addresses the operational challenges of the T+1 settlement cycle, ensuring accurate position tracking, trade reconciliation, and regulatory compliance.
 
 
 
-##📋 Project Overview
+## 📋 Project Overview
 
 The back-office serves as the operational backbone of an investment bank, managing client portfolios, risk compliance, and settlements. This system provides a "single source of truth" for clients, accounts, and securities to eliminate data redundancy and prevent failed settlements or incorrect tax reporting.
 
 
 
-##Key Features
+## Key Features
 
 Trade Lifecycle Management: Handles client onboarding, trade execution, tax lot generation, and corporate actions.
 
