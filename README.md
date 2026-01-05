@@ -23,82 +23,56 @@ The back-office serves as the operational backbone of an investment bank, managi
 * **Corporate Actions:** Automatic adjustments for stock splits and dividends.
 
 ## 🏗️ System Architecture
-1. Data Modeling
-The system was designed using Enhanced Entity-Relationship (EER) modeling to capture complex financial relationships.
+1. **Data Modeling** - The system was designed using Enhanced Entity-Relationship (EER) modeling to capture complex financial relationships.
 
 
-2. Relational Schema (MySQL)
+2. **Relational Schema (MySQL)** - The core relational model includes tables for:
 
-The core relational model includes tables for:
+* Core Entities: Client, User, Account, Security.
+* Transactional Data: Trade, Lot (Tax inventory), Journal (General ledger).
+* Market & Actions: MarketData, CorporateAction, Position.
 
-Core Entities: Client, User, Account, Security.
-
-
-Transactional Data: Trade, Lot (Tax inventory), Journal (General ledger).
-
+3. **NoSQL Layer (MongoDB)** - Select data was migrated to MongoDB using denormalization strategies (e.g., embedding account details directly within client documents) to optimize performance for high-frequency read operations.
 
 
-Market & Actions: MarketData, CorporateAction, Position.
+## 🚀 Getting Started
+**Prerequisites**
+* MySQL Server
+* MongoDB
+* Python 3.x with mysql-connector-python, pymongo, and tkinter libraries.
+
+**Installation & Setup**
+1. **Database Initialization:**
+   * Run backoffice_ddl.sql to create the MySQL schema and constraints.
+   * Run backoffice_sample_data.sql and mjones_full_client_history.sql to populate the database with comprehensive trade history.
+
+2. **NoSQL Migration:**
+   * Execute setup.py to run the ETL process, which migrates data from MySQL CSV exports into MongoDB and calculates initial positions.
+
+3. **Application Launch:**
+   * Launch the Python GUI to access the manager dashboard and analytics.
 
 
-
-3. NoSQL Layer (MongoDB)
-
-Select data was migrated to MongoDB using denormalization strategies (e.g., embedding account details directly within client documents) to optimize performance for high-frequency read operations.
-
-
-🚀 Getting Started
-Prerequisites
-
-MySQL Server
-
-MongoDB
-
-Python 3.x with mysql-connector-python, pymongo, and tkinter libraries.
-
-Installation & Setup
-
-Database Initialization:
-
-Run backoffice_ddl.sql to create the MySQL schema and constraints.
-
-Run backoffice_sample_data.sql and mjones_full_client_history.sql to populate the database with comprehensive trade history.
-
-NoSQL Migration:
-
-Execute setup.py to run the ETL process, which migrates data from MySQL CSV exports into MongoDB and calculates initial positions.
-
-Application Launch:
-
-Launch the Python GUI to access the manager dashboard and analytics.
-
-
-📊 Analytics & Dashboards
+## 📊 Analytics & Dashboards
 The Python-based GUI (built with Tkinter) allows managers to:
+* Secure Login: Filter data so managers only see their assigned clients.
+* P/L Analytics:
+  * Realized P/L: Calculated by matching SELL transactions against weighted average cost lots.
+  * Unrealized P/L: Calculated by comparing cost basis against the latest market closing prices.
 
-Secure Login: Filter data so managers only see their assigned clients.
+* Visualizations: Interactive line charts showing cumulative realized profit trends over time.
 
-P/L Analytics:
-
-Realized P/L: Calculated by matching SELL transactions against weighted average cost lots.
-
-Unrealized P/L: Calculated by comparing cost basis against the latest market closing prices.
-
-Visualizations: Interactive line charts showing cumulative realized profit trends over time.
-
-🔍 Sample Queries
+## 🔍 Sample Queries
 The repository includes several SQL and NoSQL demonstration scripts:
-
-SQL (SQL_DEMO.sql): Includes complex joins, nested queries, and set operations (UNION) to identify external entities and trade volumes.
-
-
-
-NoSQL (NoSQL_DEMO.js): Demonstrates MongoDB aggregation pipelines for trade value calculations and cross-collection lookups.
+* **SQL (SQL_DEMO.sql):** Includes complex joins, nested queries, and set operations (UNION) to identify external entities and trade volumes.
+* **NoSQL (NoSQL_DEMO.js):** Demonstrates MongoDB aggregation pipelines for trade value calculations and cross-collection lookups.
 
 
-🛠️ Future Recommendations
-API Integration: Replace EOD manual imports with real-time intraday market data feeds.
+## 🛠️ Future Recommendations
+* **API Integration:** Replace EOD manual imports with real-time intraday market data feeds.
+* **Enhanced Governance:** Implement a more stringent audit trail for manual journal entries to prevent fraud.
 
-Enhanced Governance: Implement a more stringent audit trail for manual journal entries to prevent fraud.
-
-Contributors: Jatin P. Singh & Harshit Raheja Course: IE 6700 Data Management for Analytics
+## Contributors
+Jatin P. Singh & Harshit Raheja 
+## Course
+IE 6700 Data Management for Analytics
